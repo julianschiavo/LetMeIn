@@ -53,10 +53,13 @@ If you prefer not to use SPM, you can also add **LetMeIn** as a normal framework
 Create an instance of an authenticator, then use it as the delegate when performing `URLSession` requests.
 
 ```swift
-let certificate = CertificateFile(fileName: "certificate", password: "12345678") // Create a certificate file representation
-let authenticator = ClientCertificateAuthenticator(certificateFile: certificate) // Create an authenticator
+// Create a certificate file representation
+let certificate = CertificateFile(fileName: "certificate", password: "12345678")
+// Create an authenticator
+let authenticator = ClientCertificateAuthenticator(certificateFile: certificate)
 
-let urlSession = URLSession(configuration: .default, delegate: authenticator, delegateQueue: nil) // Make a custom URLSession using the authenticator as the delegate
+// Make a custom URLSession using the authenticator as the delegate
+let urlSession = URLSession(configuration: .default, delegate: authenticator, delegateQueue: nil)
 
 // Perform a URL request
 let request = URLRequest(url: ...)
@@ -68,10 +71,13 @@ urlSession.downloadTask(with: request) { (_, response, error) in
 If you already have a custom `URLSessionDelegate`, or want to use this package in some other way (for example, with [Alamofire](https://github.com/Alamofire/Alamofire)), you can use the authenticator object directly. This is a more advanced technique, and used internally by **LetMeIn** to provide `AVAsset` support.
 
 ```swift
-let certificate = ... // Create a certificate file representation
-let authenticator = ... // Create an authenticator
+// Create a certificate file representation
+let certificate = ...
+// Create an authenticator
+let authenticator = ...
 
-let challenge = ... // A `URLAuthenticationChallenge` that was received by your client 
+// A `URLAuthenticationChallenge` that was received by your client
+let challenge = ...
 
 authenticator.handleChallenge(authenticationChallenge) { result, credential in
     switch result {
@@ -95,8 +101,10 @@ authenticator.handleChallenge(authenticationChallenge) { result, credential in
 For example, to prevent other clients or browsers from accessing your content and resources, you can use **LetMeIn** together with `SDWebImage` to load images with a client certificate.
 
 ```swift
-let certificate = CertificateFile(fileName: "certificate", password: "12345678") // Create a certificate file representation
-let authenticator = ClientCertificateAuthenticator(certificateFile: certificate) // Create an authenticator
+// Create a certificate file representation
+let certificate = CertificateFile(fileName: "certificate", password: "12345678")
+// Create an authenticator
+let authenticator = ClientCertificateAuthenticator(certificateFile: certificate)
 
 // Create a custom downloader operation (see SDWebImage documentation for more info)
 class MyDownloaderOperation: SDWebImageDownloaderOperation {
