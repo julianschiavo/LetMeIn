@@ -10,17 +10,32 @@ public struct CertificateFile: HasLogger {
     
     // MARK: - Public Properties
     
-    /// The type of certificate, defaults to `pkcs12` if not specified
-    public var type: CertificateType = .pkcs12
+    /// The type of certificate
+    public var type: CertificateType
     
     /// The certificate's file name (must be inside the app bundle)
     public var fileName: String
     
-    /// The file extension for the certificate, defaults to `pfx` if not specified
-    public var fileExtension: String = "pfx"
+    /// The file extension for the certificate
+    public var fileExtension: String
     
     /// The certificate's password, used to read the certificate
     public var password: String
+    
+    // MARK: - Init
+    
+    /// Creates a new certificate file representation
+    /// - Parameters:
+    ///   - type: The type of certificate, defaults to `pkcs12` if not specified
+    ///   - fileName: The certificate's file name (must be located inside the app bundle)
+    ///   - fileExtension: The file extension for the certificate, defaults to `pfx` if not specified
+    ///   - password: The certificate's password, used to read the certificate
+    public init(type: CertificateType = .pkcs12, fileName: String, fileExtension: String = "pfx", password: String) {
+        self.type = type
+        self.fileName = fileName
+        self.fileExtension = fileExtension
+        self.password = password
+    }
     
     // MARK: - Private Properties
     
