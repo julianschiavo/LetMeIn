@@ -128,7 +128,9 @@ imageView.sd_setImage(with: URL(string: "http://www.domain.com/path/to/image.jpg
 
 ## Contributing
 
-Contributions and pull requests are welcomed by anyone! If you find an issue with **LetMeIn**, file a Github Issue, or, if you know how to fix it, submit a pull request. Please read our [Contribution Guidelines](CONTRIBUTING.md) before making a contribution.
+Contributions and pull requests are welcomed by anyone! If you find an issue with **LetMeIn**, file a Github Issue, or, if you know how to fix it, submit a pull request. 
+
+Please review our [Code of Conduct](CODE_OF_CONDUCT.md) and [Contribution Guidelines](CONTRIBUTING.md) before making a contribution.
 
 <br>
 
